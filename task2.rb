@@ -13,18 +13,14 @@
 # 171
 # Умови недотримані, зупиняю виконання програми.
 
-until 
-puts "Please enter any number:"
-number = gets.chomp.to_i
-result = number.to_s.chars.map(&:to_i)
-	if  result.count(1) >= 2
-		puts "Conditions were not met, the app has stopped."
-		break
+loop do 
+  puts "Please enter any number:"
+  number = gets.chomp.to_i
+  result = number.to_s.chars.map(&:to_i)
+  if result.count(1) >= 2
+	puts "Conditions were not met, the app has stopped."
+	break
 	end
-multiplied = number * 256	
-puts "Result: #{multiplied}"
+  multiplied = number * 256	
+  puts "Result: #{multiplied}"
 end
-
-
-
-
