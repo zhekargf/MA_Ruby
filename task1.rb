@@ -13,16 +13,17 @@
 puts "Please name an animal."
 name = gets.chomp.capitalize
 if name == "Cat"
-	puts "#{name} says meow."
+  puts "#{name} says meow."
 elsif name == "Dog"
-	puts "#{name} says bark."
+  puts "#{name} says bark."
 elsif name == "Duck"
-	puts "#{name} says quack."
+  puts "#{name} says quack."
 elsif name == "Horse"
-	puts "#{name} says neigh."
+  puts "#{name} says neigh."
 elsif name == "Mouse"
-	puts "#{name} says squeak."
-else puts "Sorry, I don't know such an animal. Try another one."
+  puts "#{name} says squeak."
+else 
+  puts "Sorry, I don't know such an animal. Try another one."
 end
 	
 
