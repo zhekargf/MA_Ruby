@@ -1,29 +1,40 @@
-# Task #1
-# Створити програму, яка буде отримувати від користувача назву тварини.
-# В залежності від введеної тварини, виводити в консоль звук, який ця тварина видає.
-# Вивід має бути у такому форматі - "Назва_тварини говорить - звук_тварини". Назва тварини має починатись з великої літери.
-# Якщо була введена назва тварини, яка не покривається програмою (або щось ліве), то вивести в консоль відповідне повідомлення.
-# Програма має покривати 4-5 назв тварин, в незалежності від регістру введених назв.
-#
-# Приклад взаємодії користувача з цією програмою:    |   Приклад взаємодії користувача з цією програмою:
-# Введіть назву тварини:                             |   Введіть назву тварини:
-# супер_вЕдміДь                                      |   сУпер_веДмідь
-# Супер_ведмідь говорить - ведмежачий звук           |   Супер_ведмідь говорить - ведмежачий звук
+class User
+  attr_accessor :first_name, :last_name, :email
+  
+  def initialize(first_name:, last_name:, email:)
+  	@first_name = first_name
+  	@last_name = last_name
+  	@email = email
+  end
+  
+  def full_name
+    p first_name + ' ' + last_name
+  end
+  
+  def is_valid_email?
+    !!/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  end
 
-puts "Please name an animal."
-name = gets.chomp.capitalize
-if name == "Cat"
-  puts "#{name} says meow."
-elsif name == "Dog"
-  puts "#{name} says bark."
-elsif name == "Duck"
-  puts "#{name} says quack."
-elsif name == "Horse"
-  puts "#{name} says neigh."
-elsif name == "Mouse"
-  puts "#{name} says squeak."
-else 
-  puts "Sorry, I don't know such an animal. Try another one."
+  def errors
+    error = []
+    error << 'First name cannot be blank.'                   if first_name.empty?
+    error << 'First name must be at least three characters.' if first_name.length < 3
+    error << 'Last name cannot be blank.'                    if last_name.empty?
+    error << 'Last name must be at least three characters.'  if last_name.length < 3
+    error << 'Email cannot be blank.'                        if email.empty?
+    error << 'Please enter a correct email.'                 if is_valid_email? == false
+    error << 'First name must be a string.'                  if first_name != String
+    error << 'Last name must be a string.'                   if last_name != String
+    error << 'Email must be a string.'                       if email != String
+    error    
+  end
 end
-	
 
+u1 = User.new(first_name: 'John', last_name: 'Snow', email: 'info@johnsnow.com')
+puts "First name: #{u1.first_name}"
+puts "Last name: #{u1.last_name}"
+puts "Email: #{u1.email}"
+puts "Full name: #{u1.full_name}"
+puts "Valid_email: #{u1.is_valid_email?}" 
+puts "errors: #{u1.errors}"
+puts ''\
